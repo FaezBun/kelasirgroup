@@ -12,7 +12,7 @@ services:
     networks:
       - socket_net
 
-  # --- SERVER ---
+  # --- SERVERS ---
   server_c1:
     build: ./server_c
     environment: { PORT: 5001 }
