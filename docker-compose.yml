@@ -119,14 +119,15 @@ services:
     environment: { TARGET_HOST: "server_c3", TARGET_PORT: 5003, USER_ID: "py9_user" }
     networks: [socket_net]
 
-
-dashboard:
+  dashboard: # <--- Sekarang baru dia faham ini adalah satu servis
     build: ./dashboard
     container_name: dashboard_app
     networks:
       - socket_net
     ports:
       - "8501:8501"
+    depends_on:
+      - db
 
 networks:
   socket_net:
