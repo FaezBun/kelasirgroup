@@ -1,0 +1,124 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: socket_db
+    volumes:
+      - ./db_data:/var/lib/mysql
+      - ./db_init:/docker-entrypoint-initdb.d
+    networks:
+      - socket_net
+
+  # --- SERVER ---
+  server_c1:
+    build: ./server_c
+    environment: { PORT: 5001 }
+    networks: [socket_net]
+  server_c2:
+    build: ./server_c
+    environment: { PORT: 5002 }
+    networks: [socket_net]
+  server_c3:
+    build: ./server_c
+    environment: { PORT: 5003 }
+    networks: [socket_net]
+
+  server_py1:
+    build: ./server_py
+    environment: { PORT: 6001 }
+    networks: [socket_net]
+  server_py2:
+    build: ./server_py
+    environment: { PORT: 6002 }
+    networks: [socket_net]
+  server_py3:
+    build: ./server_py
+    environment: { PORT: 6003 }
+    networks: [socket_net]
+
+  # --- CLIENT C (Menghantar USER_ID masing-masing) ---
+  client_c1:
+    build: ./client_c
+    environment: { TARGET_HOST: "server_c1", TARGET_PORT: 5001, USER_ID: "c1_user" }
+    networks: [socket_net]
+  client_c2:
+    build: ./client_c
+    environment: { TARGET_HOST: "server_c2", TARGET_PORT: 5002, USER_ID: "c2_user" }
+    networks: [socket_net]
+  client_c3:
+    build: ./client_c
+    environment: { TARGET_HOST: "server_c3", TARGET_PORT: 5003, USER_ID: "c3_user" }
+    networks: [socket_net]
+  client_c4:
+    build: ./client_c
+    environment: { TARGET_HOST: "server_c1", TARGET_PORT: 5001, USER_ID: "c4_user" }
+    networks: [socket_net]
+  client_c5:
+    build: ./client_c
+    environment: { TARGET_HOST: "server_c2", TARGET_PORT: 5002, USER_ID: "c5_user" }
+    networks: [socket_net]
+  client_c6:
+    build: ./client_c
+    environment: { TARGET_HOST: "server_c3", TARGET_PORT: 5003, USER_ID: "c6_user" }
+    networks: [socket_net]
+
+# --- CLIENT C (Sekarang berhubung ke Server PY) ---
+  client_c7:
+    build: ./client_c
+    environment: { TARGET_HOST: "server_py1", TARGET_PORT: 6001, USER_ID: "c7_user" }
+    networks: [socket_net]
+  client_c8:
+    build: ./client_c
+    environment: { TARGET_HOST: "server_py2", TARGET_PORT: 6002, USER_ID: "c8_user" }
+    networks: [socket_net]
+  client_c9:
+    build: ./client_c
+    environment: { TARGET_HOST: "server_py3", TARGET_PORT: 6003, USER_ID: "c9_user" }
+    networks: [socket_net]
+
+  # --- CLIENT PY (Menghantar USER_ID masing-masing) ---
+  client_py1:
+    build: ./client_py
+    environment: { TARGET_HOST: "server_py1", TARGET_PORT: 6001, USER_ID: "py1_user" }
+    networks: [socket_net]
+  client_py2:
+    build: ./client_py
+    environment: { TARGET_HOST: "server_py2", TARGET_PORT: 6002, USER_ID: "py2_user" }
+    networks: [socket_net]
+  client_py3:
+    build: ./client_py
+    environment: { TARGET_HOST: "server_py3", TARGET_PORT: 6003, USER_ID: "py3_user" }
+    networks: [socket_net]
+  client_py4:
+    build: ./client_py
+    environment: { TARGET_HOST: "server_py1", TARGET_PORT: 6001, USER_ID: "py4_user" }
+    networks: [socket_net]
+  client_py5:
+    build: ./client_py
+    environment: { TARGET_HOST: "server_py2", TARGET_PORT: 6002, USER_ID: "py5_user" }
+    networks: [socket_net]
+  client_py6:
+    build: ./client_py
+    environment: { TARGET_HOST: "server_py3", TARGET_PORT: 6003, USER_ID: "py6_user" }
+    networks: [socket_net]
+
+# --- CLIENT PY (Sekarang berhubung ke Server C) ---
+  client_py7:
+    build: ./client_py
+    environment: { TARGET_HOST: "server_c1", TARGET_PORT: 5001, USER_ID: "py7_user" }
+    networks: [socket_net]
+  client_py8:
+    build: ./client_py
+    environment: { TARGET_HOST: "server_c2", TARGET_PORT: 5002, USER_ID: "py8_user" }
+    networks: [socket_net]
+  client_py9:
+    build: ./client_py
+    environment: { TARGET_HOST: "server_c3", TARGET_PORT: 5003, USER_ID: "py9_user" }
+    networks: [socket_net]
+
+networks:
+  socket_net:
+    driver: bridge

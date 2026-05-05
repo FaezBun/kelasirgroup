@@ -1,0 +1,9 @@
+# Abaikan folder database
+db_data/
+
+# Abaikan fail cache Python
+__pycache__/
+*.pyc
+
+# Abaikan fail persekitaran (jika ada)
+.env
