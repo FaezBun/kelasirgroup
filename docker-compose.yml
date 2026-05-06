@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   db:
     image: mysql:8.0
@@ -65,7 +64,7 @@ services:
     environment: { TARGET_HOST: "server_c3", TARGET_PORT: 5003, USER_ID: "c6_user" }
     networks: [socket_net]
 
-# --- CLIENT C (Sekarang berhubung ke Server PY) ---
+# --- CLIENT C (berhubung ke Server PY) ---
   client_c7:
     build: ./client_c
     environment: { TARGET_HOST: "server_py1", TARGET_PORT: 6001, USER_ID: "c7_user" }
@@ -105,7 +104,7 @@ services:
     environment: { TARGET_HOST: "server_py3", TARGET_PORT: 6003, USER_ID: "py6_user" }
     networks: [socket_net]
 
-# --- CLIENT PY (Sekarang berhubung ke Server C) ---
+# --- CLIENT PY (berhubung ke Server C) ---
   client_py7:
     build: ./client_py
     environment: { TARGET_HOST: "server_c1", TARGET_PORT: 5001, USER_ID: "py7_user" }
@@ -119,7 +118,7 @@ services:
     environment: { TARGET_HOST: "server_c3", TARGET_PORT: 5003, USER_ID: "py9_user" }
     networks: [socket_net]
 
-  dashboard: # <--- Sekarang baru dia faham ini adalah satu servis
+  dashboard: # Dashboard GUI
     build: ./dashboard
     container_name: dashboard_app
     networks:

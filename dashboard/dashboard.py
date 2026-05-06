@@ -4,7 +4,7 @@ import mysql.connector
 import plotly.express as px
 
 # Konfigurasi Tema Futuristik
-st.set_page_config(page_title="LOC8 Ops Dashboard", layout="wide")
+st.set_page_config(page_title="Insight Dashboard", layout="wide")
 
 st.markdown("""
     <style>
@@ -13,7 +13,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.title("🚀 LOC8 Real-Time Analytics")
+st.title("🚀 Insight Dashboard")
 
 # Fungsi Sambungan Database
 def get_data():
