@@ -118,15 +118,24 @@ services:
     environment: { TARGET_HOST: "server_c3", TARGET_PORT: 5003, USER_ID: "py9_user" }
     networks: [socket_net]
 
-  dashboard: # Dashboard GUI
+  dashboard:
     build: ./dashboard
     container_name: dashboard_app
     networks:
       - socket_net
     ports:
       - "8501:8501"
+    command: streamlit run dashboard.py --server.port 8501 --server.address 0.0.0.0 --server.enableCORS=false --server.enableXsrfProtection=false
     depends_on:
       - db
+
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    restart: unless-stopped
+    network_mode: "host"
+    environment:
+      - TUNNEL_TOKEN=eyJhIjoiMjM0ZDYyMDY4M2MxZGU1NTQ2N2U0N2Y0YTU5YThkYTciLCJ0IjoiYmJlOTdkNTYtODNiMC00MjEzLWEwODUtNzJjNWEwODU0ZTQ4IiwicyI6IndyK0JXSWYyTHpacVV2MjNhRmZEakxRaEN3TEErMXVyUUJrcDBCajBGWFk9In0=
+    command: tunnel --no-autoupdate run
 
 networks:
   socket_net:
