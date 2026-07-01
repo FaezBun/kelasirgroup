@@ -134,7 +134,7 @@ services:
     restart: unless-stopped
     network_mode: "host"
     environment:
-      - TUNNEL_TOKEN=eyJhIjoiMjM0ZDYyMDY4M2MxZGU1NTQ2N2U0N2Y0YTU5YThkYTciLCJ0IjoiYmJlOTdkNTYtODNiMC00MjEzLWEwODUtNzJjNWEwODU0ZTQ4IiwicyI6IndyK0JXSWYyTHpacVV2MjNhRmZEakxRaEN3TEErMXVyUUJrcDBCajBGWFk9In0=
+      - TUNNEL_TOKEN= YOUR_CLOUDFLARE_TOKEN
     command: tunnel --no-autoupdate run
 
 networks:
