@@ -31,7 +31,7 @@ Before proceeding, ensure your environment meets the following specifications to
 Follow these step-by-step instructions to initialize the multi-language socket architecture and test horizontal scaling.
 *(Ikuti langkah demi langkah ini untuk memulakan seni bina soket pelbagai bahasa dan menguji penggandaan horizontal.)*
 
-### Step 1: Clone the Repository & Configure Token
+### Clone the Repository & Configure Token
 *(Langkah 1: Klon Repositori & Konfigurasi Token)*
 
 Clone your repository to your Linux host and insert your Cloudflare Tunnel Token into the `docker-compose.yml` file as stated in the architecture setup.
@@ -49,7 +49,7 @@ If you prefer not to use Cloudflare Tunnel, you can bypass it entirely. Simply o
 (Jika anda tidak mahu menggunakan Cloudflare Tunnel, anda boleh terus membuka Dashboard melalui web browser menggunakan IP server anda dan port 8501: http://<ip-server-anda>:8501)
 ⚙️ Cloudflare Tunnel Setup (Subdomain Configuration)
 
-### Cloudflare Tunnel Setup (Subdomain Configuration)
+## Cloudflare Tunnel Setup (Subdomain Configuration)
 
 To expose the Dashboard to your own custom subdomain (e.g., supra.yourdomain.com), you must insert your Cloudflare Tunnel Token into the docker-compose.yml file.
 
@@ -69,4 +69,26 @@ tunnel:
     environment:
       - TUNNEL_TOKEN=YOUR_CLOUDFLARE_TOKEN
     command: tunnel --no-autoupdate run
+```
+
+## Build
+
+```bash
+docker-compose up -d --build
+```
+
+### Monitoring Logs
+
+When horizontal scaling is active, Docker automatically assigns an index number to each container replica (e.g., `client_py1`, `client_py2`, `client_c1`). You can choose to view the combined logs of all instances or isolate a single specific container for targeted troubleshooting.
+*(Apabila horizontal scaling aktif, Docker secara automatik memberikan nombor indeks kepada setiap replika kontena (cth: `client_py1`, `client_c1`). Anda boleh memilih untuk melihat gabungan log kesemua instans atau memantau satu kontena spesifik sahaja untuk tujuan siasatan terperinci.)*
+
+```bash
+# Monitor Python clients 
+docker-compose logs -f client_py1-py9
+
+# Monitor C clients 
+docker-compose logs -f client_c1-c9
+
+# monitor all
+docker compose logs -f
 ```
