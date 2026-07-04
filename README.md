@@ -14,6 +14,33 @@ This project demonstrates high-performance socket communication between differen
 * **Database:** MySQL 8.0 for robust data logging.
 * **Backend:** Scalable C and Python socket servers/clients.
 
+## 💻 System Requirements (Keperluan Sistem)
+
+Before proceeding, ensure your environment meets the following specifications to guarantee smooth cross-language compilation and network routing:
+*(Sebelum bermula, pastikan persekitaran hos anda memenuhi spesifikasi berikut bagi menjamin kelancaran kompilasi silang bahasa dan penghalaan rangkaian:)*
+
+* **Operating System (OS):** Ubuntu Linux (Recommended) / any Linux distribution with a modern kernel.
+* **Containerization Engine:** Docker Engine v20.10+ & Docker Compose v2.20+.
+* **Hardware Architecture:** x86_64 or ARM64 (ThinkPad setups tested successfully).
+* **Network Allocation:** At least 1x internal Bridge Network (`socket_net`) and port `8501` open for local Dashboard access.
+* **Compilation Base:** GNU Compiler Collection (GCC) for C compilation and Python 3.10+ (if running scripts locally outside Docker).
+
+
+## ⚙️ How to Setup & Run (Cara Setup & Jalankan)
+
+Follow these step-by-step instructions to initialize the multi-language socket architecture and test horizontal scaling.
+*(Ikuti langkah demi langkah ini untuk memulakan seni bina soket pelbagai bahasa dan menguji penggandaan horizontal.)*
+
+### Step 1: Clone the Repository & Configure Token
+*(Langkah 1: Klon Repositori & Konfigurasi Token)*
+
+Clone your repository to your Linux host and insert your Cloudflare Tunnel Token into the `docker-compose.yml` file as stated in the architecture setup.
+*(Klon repositori ke hos Linux anda dan masukkan Cloudflare Tunnel Token ke dalam fail docker-compose.yml seperti yang dinyatakan dalam tetapan seni bina.)*
+
+```bash
+git clone <your-repository-url>
+cd <your-project-directory>
+
 ---
 
 ## 🌐 Alternative: Local Access (Without Cloudflare Tunnel)
@@ -43,3 +70,6 @@ To expose the Dashboard to your own custom subdomain (e.g., `supra.yourdomain.co
     environment:
       - TUNNEL_TOKEN=YOUR_CLOUDFLARE_TOKEN
     command: tunnel --no-autoupdate run
+
+
+
