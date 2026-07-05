@@ -1,5 +1,7 @@
 # Multi-Language Socket Communication and Horizontal Scaling in a Dockerized Infrastructure
 
+![header][pic07.gif]
+
 This project demonstrates high-performance socket communication between different programming languages (C and Python) within a horizontally scalable Docker environment. 
 *(Projek ini mendemonstrasikan komunikasi socket berprestasi tinggi antara pelbagai bahasa pengaturcaraan (C dan Python) di dalam persekitaran Docker yang sedia untuk digandakan / horizontal scaling).*
 
@@ -84,10 +86,10 @@ When horizontal scaling is active, Docker automatically assigns an index number 
 
 ```bash
 # Monitor Python clients 
-docker-compose logs -f client_py1-py9
+docker-compose logs -f client_py1 (py1-py9)
 
 # Monitor C clients 
-docker-compose logs -f client_c1-c9
+docker-compose logs -f client_c1 (c1-c9)
 
 # monitor all
 docker compose logs -f
