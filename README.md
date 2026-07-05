@@ -1,6 +1,6 @@
 # Multi-Language Socket Communication and Horizontal Scaling in a Dockerized Infrastructure
 
-![header][pic07.gif]
+![header](pic07.gif)
 
 This project demonstrates high-performance socket communication between different programming languages (C and Python) within a horizontally scalable Docker environment. 
 *(Projek ini mendemonstrasikan komunikasi socket berprestasi tinggi antara pelbagai bahasa pengaturcaraan (C dan Python) di dalam persekitaran Docker yang sedia untuk digandakan / horizontal scaling).*
