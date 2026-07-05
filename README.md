@@ -96,6 +96,7 @@ docker compose logs -f
 ```
 
 ![canva](pic08.jpg)
+
+
 ![canva](pic09.jpg)
-![canva](pic08.jpg)
-![canva](pic08.jpg)
+
