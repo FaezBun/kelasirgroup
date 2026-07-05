@@ -95,8 +95,8 @@ docker-compose logs -f client_c1 (c1-c9)
 docker compose logs -f
 ```
 
-![canva](pic08.jpg)
+![](pic08.jpg)
 
 
-![canva](pic09.jpg)
+![](pic09.jpg)
 
