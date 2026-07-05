@@ -81,6 +81,11 @@ docker-compose up -d --build
 
 ### Monitoring Logs
 
+![pic08](pic08.jpg)
+
+
+![pic09](pic09.jpg)
+
 When horizontal scaling is active, Docker automatically assigns an index number to each container replica (e.g., `client_py1`, `client_py2`, `client_c1`). You can choose to view the combined logs of all instances or isolate a single specific container for targeted troubleshooting.
 *(Apabila horizontal scaling aktif, Docker secara automatik memberikan nombor indeks kepada setiap replika kontena (cth: `client_py1`, `client_c1`). Anda boleh memilih untuk melihat gabungan log kesemua instans atau memantau satu kontena spesifik sahaja untuk tujuan siasatan terperinci.)*
 
@@ -94,9 +99,4 @@ docker-compose logs -f client_c1 (c1-c9)
 # monitor all
 docker compose logs -f
 ```
-
-![](pic08.jpg)
-
-
-![](pic09.jpg)
 
