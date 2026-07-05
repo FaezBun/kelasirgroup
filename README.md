@@ -94,3 +94,8 @@ docker-compose logs -f client_c1 (c1-c9)
 # monitor all
 docker compose logs -f
 ```
+
+![canva](pic08.jpg)
+![canva](pic09.jpg)
+![canva](pic08.jpg)
+![canva](pic08.jpg)
